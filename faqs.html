@@ -1,0 +1,1437 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs — Richard Ryan Alby Book Marketing</title>Richard Ryan Alby
+    <meta name="description" content="Find answers to frequently asked questions about  Book Marketing services, pricing, and how we work with authors.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #090909;
+            --bg-secondary: #211A16;
+            --bronze: #A87945;
+            --bronze-light: #C49A6C;
+            --bronze-dark: #8A6235;
+            --lavender: #B8A4D4;
+            --ivory: #F5F2ED;
+            --white: #FFFFFF;
+            --text-primary: #F5F2ED;
+            --text-secondary: rgba(245, 242, 237, 0.7);
+            --text-muted: rgba(245, 242, 237, 0.45);
+            --border-subtle: rgba(168, 121, 69, 0.15);
+            --border-medium: rgba(168, 121, 69, 0.3);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--bronze-dark);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--bronze);
+        }
+
+        /* ── Page Loader ── */
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        .page-loader.loaded {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .loader-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--ivory);
+            letter-spacing: 3px;
+            margin-bottom: 24px;
+            opacity: 0.8;
+        }
+        .loader-line {
+            width: 120px;
+            height: 1px;
+            background: var(--border-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+        .loader-line::after {
+            content: '';
+            position: absolute;
+            left: -100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bronze);
+            animation: loaderSlide 1.2s ease-in-out infinite;
+        }
+        @keyframes loaderSlide {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* ── Page Transition ── */
+        #pageTransition {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: var(--bg-primary);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            pointer-events: none;
+        }
+        #pageTransition.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+
+        /* ── Header / Nav ── */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+        }
+        .site-header.scrolled {
+            background: rgba(9, 9, 9, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 12px 0;
+            box-shadow: 0 1px 0 var(--border-subtle);
+        }
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .nav-logo img {
+            height: 38px;
+            width: auto;
+        }
+        .nav-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--ivory);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+        .nav-links a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+            padding: 4px 0;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--bronze);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--ivory);
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-cta {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--bg-primary) !important;
+            background: var(--bronze);
+            padding: 10px 24px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .nav-cta::after {
+            display: none !important;
+        }
+        .nav-cta:hover {
+            background: var(--bronze-light);
+            transform: translateY(-1px);
+            color: var(--bg-primary) !important;
+        }
+
+        /* ── Mobile Menu ── */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1100;
+        }
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: var(--ivory);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .mobile-menu-toggle.open span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 5px);
+        }
+        .mobile-menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-menu-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -5px);
+        }
+        .mobile-nav-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1050;
+            background: rgba(9, 9, 9, 0.98);
+            backdrop-filter: blur(30px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        .mobile-nav-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .mobile-nav-overlay a {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        .mobile-nav-overlay.open a {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .mobile-nav-overlay a:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-nav-overlay a:nth-child(2) { transition-delay: 0.15s; }
+        .mobile-nav-overlay a:nth-child(3) { transition-delay: 0.2s; }
+        .mobile-nav-overlay a:nth-child(4) { transition-delay: 0.25s; }
+        .mobile-nav-overlay a:nth-child(5) { transition-delay: 0.3s; }
+        .mobile-nav-overlay a:nth-child(6) { transition-delay: 0.35s; }
+        .mobile-nav-overlay a:hover,
+        .mobile-nav-overlay a.active {
+            color: var(--bronze);
+        }
+
+        /* ── Hero ── */
+        .page-hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+        }
+        .hero-bg img.revealed {
+            opacity: 1;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(9, 9, 9, 0.7) 0%,
+                rgba(9, 9, 9, 0.5) 40%,
+                rgba(9, 9, 9, 0.85) 100%
+            );
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 780px;
+            padding: 0 30px;
+        }
+        .hero-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--bronze);
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+        }
+        .hero-label.revealed { opacity: 1; transform: translateY(0); }
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-weight: 500;
+            color: var(--ivory);
+            line-height: 1.2;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s;
+        }
+        .hero-title.revealed { opacity: 1; transform: translateY(0); }
+        .hero-title em {
+            font-style: italic;
+            color: var(--bronze);
+        }
+        .hero-description {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease 0.7s, transform 0.8s ease 0.7s;
+        }
+        .hero-description.revealed { opacity: 1; transform: translateY(0); }
+
+        /* ── Section Shared ── */
+        .section {
+            padding: 100px 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        .container-narrow {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--bronze);
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 500;
+            color: var(--ivory);
+            line-height: 1.25;
+            margin-bottom: 20px;
+        }
+        .section-title em {
+            font-style: italic;
+            color: var(--bronze);
+        }
+        .section-description {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 640px;
+        }
+        .section-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--bronze);
+            margin: 24px 0;
+        }
+        .section-divider-center {
+            width: 60px;
+            height: 1px;
+            background: var(--bronze);
+            margin: 24px auto;
+        }
+
+        /* ── FAQ Accordion ── */
+        .faq-intro {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .faq-intro .section-description {
+            margin: 0 auto;
+        }
+
+        .faq-category {
+            margin-bottom: 60px;
+        }
+        .faq-category:last-child {
+            margin-bottom: 0;
+        }
+        .faq-category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--ivory);
+            margin-bottom: 8px;
+        }
+        .faq-category-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+        .faq-category-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--border-medium);
+            margin-bottom: 28px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .faq-item:first-child {
+            border-top: 1px solid var(--border-subtle);
+        }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 24px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            cursor: pointer;
+            text-align: left;
+            transition: color 0.3s ease;
+        }
+        .faq-question:hover {
+            color: var(--bronze-light);
+        }
+        .faq-question-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.02rem;
+            font-weight: 400;
+            color: var(--ivory);
+            line-height: 1.5;
+            transition: color 0.3s ease;
+        }
+        .faq-question:hover .faq-question-text {
+            color: var(--bronze-light);
+        }
+        .faq-icon {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .faq-icon::before,
+        .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: var(--bronze);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+        }
+        .faq-icon::before {
+            width: 14px;
+            height: 1px;
+        }
+        .faq-icon::after {
+            width: 1px;
+            height: 14px;
+        }
+        .faq-item.open .faq-icon::after {
+            transform: rotate(90deg);
+            opacity: 0;
+        }
+        .faq-item.open .faq-icon::before {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .faq-answer {
+            padding: 0 0 28px 0;
+            opacity: 0;
+            transform: translateY(-8px);
+            transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
+        }
+        .faq-item.open .faq-answer {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .faq-answer p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.85;
+        }
+        .faq-answer p + p {
+            margin-top: 14px;
+        }
+
+        /* ── CTA Section ── */
+        .cta-section {
+            background: var(--bg-secondary);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(168, 121, 69, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 500;
+            color: var(--ivory);
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+        .cta-title em {
+            font-style: italic;
+            color: var(--bronze);
+        }
+        .cta-text {
+            font-size: 1.02rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 560px;
+            margin: 0 auto 40px;
+        }
+        .cta-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* ── Buttons ── */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--bg-primary);
+            background: var(--bronze);
+            padding: 16px 36px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.5s ease;
+        }
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(168, 121, 69, 0.25);
+        }
+        .btn-primary .btn-arrow {
+            transition: transform 0.3s ease;
+        }
+        .btn-primary:hover .btn-arrow {
+            transform: translateX(4px);
+        }
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ivory);
+            background: transparent;
+            border: 1px solid var(--border-medium);
+            padding: 16px 36px;
+            text-decoration: none;
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+        }
+        .btn-outline:hover {
+            transform: translateY(-3px);
+            border-color: var(--bronze);
+            background: rgba(168, 121, 69, 0.08);
+        }
+        .btn-outline .btn-arrow {
+            transition: transform 0.3s ease;
+        }
+        .btn-outline:hover .btn-arrow {
+            transform: translateX(4px);
+        }
+
+        /* ── Footer ── */
+        .site-footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-subtle);
+            padding: 80px 0 40px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        .footer-brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--ivory);
+            margin-bottom: 16px;
+        }
+        .footer-brand-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .footer-heading {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--bronze);
+            margin-bottom: 20px;
+        }
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .footer-links a {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: var(--ivory);
+        }
+        .footer-contact-item {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .footer-contact-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-contact-item a:hover {
+            color: var(--bronze);
+        }
+        .footer-bottom {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-copyright {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+        .footer-bottom-links a {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-bottom-links a:hover {
+            color: var(--ivory);
+        }
+
+        /* ── Scroll Reveal ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible,
+        .reveal-left.visible,
+        .reveal-right.visible,
+        .reveal-scale.visible {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+        .stagger-7 { transition-delay: 0.7s; }
+        .stagger-8 { transition-delay: 0.8s; }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-toggle { display: flex; }
+            .nav-container { padding: 0 24px; }
+            .container, .container-narrow { padding: 0 24px; }
+            .section { padding: 70px 0; }
+            .page-hero { min-height: 55vh; }
+            .faq-question { padding: 20px 0; }
+            .faq-question-text { font-size: 0.95rem; }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-title { font-size: 2rem; }
+            .section-title { font-size: 1.6rem; }
+            .cta-title { font-size: 1.6rem; }
+            .btn-primary, .btn-outline {
+                padding: 14px 28px;
+                font-size: 0.75rem;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .reveal, .reveal-left, .reveal-right, .reveal-scale {
+                opacity: 1;
+                transform: none;
+            }
+            .hero-label, .hero-title, .hero-description {
+                opacity: 1;
+                transform: none;
+            }
+            .hero-bg img { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-text">Richard Ryan Alby
+        </div>
+        <div class="loader-line"></div>
+    </div>
+
+    <!-- Page Transition -->
+    <div id="pageTransition"></div>
+
+    <!-- Header -->
+    <header class="site-header" id="siteHeader">
+        <nav class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="Logo.png" alt="Richard Ryan Alby Book Marketing" onerror="this.style.display='none'">
+                <span class="nav-logo-text">Richard Ryan Alby</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="faqs.html" class="active">FAQs</a></li>
+                <li><a href="contact-us.html" class="nav-cta">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileToggle" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="faqs.html" class="active">FAQs</a>
+        <a href="contact-us.html">Contact Us</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1600&q=80" alt="Library shelves with warm lighting" id="heroBgImg">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-label" id="heroLabel">Frequently Asked Questions</p>
+            <h1 class="hero-title" id="heroTitle">Everything You Need to <em>Know</em></h1>
+            <p class="hero-description" id="heroDesc">Clear, straightforward answers to the most common questions about our book marketing services, process, and how we work with authors.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container-narrow">
+
+            <div class="faq-intro reveal">
+                <p class="section-label">Common Questions</p>
+                <h2 class="section-title">Answers to Help You <em>Get Started</em></h2>
+                <div class="section-divider-center"></div>
+                <p class="section-description">We understand that choosing a book marketing partner is an important decision. Below you will find detailed answers to the questions authors ask most often.</p>
+            </div>
+
+            <!-- General Questions -->
+            <div class="faq-category reveal stagger-1">
+                <h3 class="faq-category-title">General Questions</h3>
+                <p class="faq-category-subtitle">The essentials about what we do and who we serve.</p>
+                <div class="faq-category-divider"></div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">What does a professional book marketer do?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>A professional book marketer develops and executes strategies designed to increase a book's visibility, reach its target readership, and build lasting awareness for the author. This can include activities such as social media promotion, content creation, email marketing, author branding, book launch campaigns, and ongoing promotional efforts tailored to the specific needs of each book and author.</p>
+                            <p>At Richard Ryan Alby Book Marketing, every strategy is thoughtfully crafted to align with your goals, your genre, and the readers you want to reach.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Who can benefit from professional book marketing?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Professional book marketing can benefit a wide range of authors, including self-published authors, traditionally published authors who want to supplement their publisher's efforts, first-time authors preparing for a debut, and established authors looking to expand their readership or promote a new release.</p>
+                            <p>Whether you have just finished your manuscript or you have several published titles, strategic marketing can help your books reach the readers who will appreciate them most.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Do you work with independent authors?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Yes. Independent and self-published authors are a significant part of the authors we work with. We understand the unique challenges that come with navigating the publishing landscape independently, and our services are designed to provide the professional marketing support that independent authors need to stand out in a competitive market.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Do you work with first-time authors?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Absolutely. First-time authors are very welcome. We understand that the world of book marketing can feel overwhelming when you are just starting out, and we take the time to explain every step of the process clearly. Our goal is to make your first book marketing experience as smooth and supportive as possible, helping you build a strong foundation for your author career.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">What genres do you work with?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>We work with authors across a wide variety of genres, including fiction, non-fiction, memoir, self-help, business, young adult, romance, thriller, fantasy, poetry, and more. Our approach is adaptable, and we tailor each marketing strategy to suit the conventions, audience expectations, and promotional channels that are most effective for your specific genre.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Why is book marketing important?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Millions of books are published every year, and even the most beautifully written book can go unnoticed without a thoughtful marketing strategy. Book marketing is what connects your work with the readers who are searching for stories and ideas like yours. It builds awareness, establishes your presence as an author, and creates opportunities for your book to be discovered in an increasingly crowded marketplace.</p>
+                            <p>Investing in professional marketing gives your book the visibility it deserves and helps you build a readership that can grow with every title you publish.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Can authors request individual services?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Yes. While we offer comprehensive packages, we also understand that some authors may only need support with a specific aspect of their marketing. You are welcome to request individual services that address your particular needs, and we will work with you to determine the best approach for your situation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Questions -->
+            <div class="faq-category reveal stagger-2">
+                <h3 class="faq-category-title">Services Questions</h3>
+                <p class="faq-category-subtitle">Details about the marketing support we provide.</p>
+                <div class="faq-category-divider"></div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">What types of book promotion do you offer?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Our book promotion services encompass a range of strategies designed to increase your book's visibility and reach. This can include social media promotion, email marketing campaigns, content creation, online advertising support, reader engagement strategies, and coordinated promotional activities across multiple platforms. Each promotion plan is customized based on your book, your goals, and your target audience.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Can you help with author branding?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Yes, author branding is one of our core services. We help authors develop a cohesive and compelling brand identity that reflects their voice, their genre, and the impression they want to leave with readers. This includes guidance on visual identity, messaging, online presence, and the overall narrative that surrounds you as an author. A strong author brand creates recognition and trust that extends across every book you publish.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Do you provide social media marketing?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Yes. Social media is a powerful tool for connecting with readers, and we offer social media marketing services tailored specifically for authors. This includes content planning, post creation, audience engagement strategies, and guidance on how to use social media platforms effectively to grow your readership and maintain a consistent author presence online.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Can you help with a book launch campaign?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Yes, book launch campaigns are one of our specialties. A well-executed launch can set the tone for your book's entire lifecycle, and we work closely with you to plan and implement a launch strategy that builds anticipation, generates excitement, and creates momentum around your release. From pre-launch preparation to launch week activities and post-launch follow-through, we guide you through every phase.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Do you create promotional content?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Yes. We create a variety of promotional content designed to showcase your book and engage your target audience. This can include social media graphics, promotional copy, email newsletters, blog content, press materials, and other assets that support your overall marketing strategy. All content is crafted to reflect your author brand and resonate with your ideal readers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Can you create a customized marketing strategy?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Absolutely. In fact, customization is at the heart of everything we do. We recognize that no two books or authors are the same, and a one-size-fits-all approach rarely produces meaningful results. We take the time to understand your book, your audience, your goals, and your current position in the market before developing a strategy that is uniquely suited to your needs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Do you offer ongoing promotional activities?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Yes. Book marketing is not limited to launch week, and we offer ongoing promotional support for authors who want to maintain visibility and continue growing their readership over time. Ongoing activities can include regular social media content, periodic email campaigns, seasonal promotions, and sustained audience engagement efforts designed to keep your book in front of readers long after its initial release.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Questions -->
+            <div class="faq-category reveal stagger-3">
+                <h3 class="faq-category-title">Pricing Questions</h3>
+                <p class="faq-category-subtitle">Understanding how our services are structured.</p>
+                <div class="faq-category-divider"></div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">How are your services priced?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Our services are priced based on the scope of work, the specific services you select, and the level of customization required for your project. We believe in transparent pricing, and we provide clear information about what is included in each service or package before any commitment is made. You can find an overview of our pricing structure on our Pricing page, and we are always happy to discuss the details further via email.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Do you offer different packages?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Yes, we offer a selection of packages designed to accommodate different needs and levels of marketing support. Each package includes a specific combination of services, and you can review the details of each option on our Pricing page. If you are unsure which package is the best fit for your situation, feel free to reach out and we will be glad to help you determine the right choice.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Can I request a customized package?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Yes. We understand that standard packages may not perfectly align with every author's needs, and we are happy to create a customized package that combines the specific services you require. Simply reach out to us with details about what you are looking for, and we will put together a tailored proposal that addresses your goals and fits your situation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Does pricing depend on the services I choose?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Yes. The total cost of your book marketing project will depend on which services you select and the scope of work involved. Different services require different levels of time, expertise, and resources, and our pricing reflects that. We always provide a clear breakdown of costs before beginning any work so that you know exactly what to expect.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Working With Me -->
+            <div class="faq-category reveal stagger-4">
+                <h3 class="faq-category-title">Working With Me</h3>
+                <p class="faq-category-subtitle">What to expect when we begin working together.</p>
+                <div class="faq-category-divider"></div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">How do I get started?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Getting started is simple. You can reach out to us through the contact form on our Contact Us page or by sending an email directly to <a href="mailto:richardryanalby@gmail.com" style="color: var(--bronze); text-decoration: underline;">richardryanalby@gmail.com</a>. Share some details about your book, your goals, and the type of support you are looking for, and we will get back to you to discuss how we can help.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">What information do I need to provide?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>When you first reach out, it is helpful to share some basic information about your book, including the title, genre, a brief description, your target audience, and your marketing goals. If your book has already been published, sharing details about your current online presence and any previous marketing efforts can also be useful. The more context you provide, the better equipped we will be to recommend the right approach for you.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">How can I contact you?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>You can contact us in two ways. You can send an email to <a href="mailto:richardryanalby@gmail.com" style="color: var(--bronze); text-decoration: underline;">richardryanalby@gmail.com</a>, or you can fill out the contact form on our <a href="contact-us.html" style="color: var(--bronze); text-decoration: underline;">Contact Us</a> page. We respond to all inquiries and look forward to hearing about your book and your goals.</p>
+                        </div>
+                    </div>
+                </div
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">How do you understand my goals?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Understanding your goals is the foundation of everything we do. When you first reach out, we take the time to listen carefully to what you want to achieve, who you want to reach, and what success looks like for you. We ask thoughtful questions about your book, your audience, and your vision so that we can develop a strategy that is genuinely aligned with your objectives rather than applying a generic approach.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Can I request more than one service?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer-wrapper">
+                        <div class="faq-answer">
+                            <p>Yes, absolutely. Many authors benefit from combining multiple services to create a more comprehensive and effective marketing strategy. Whether you want to pair author branding with a book launch campaign, combine social media marketing with ongoing promotional activities, or build a fully customized plan that draws from several of our offerings, we are happy to work with you to create the combination that best serves your needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container reveal">
+            <p class="section-label" style="text-align:center;">Still Have Questions?</p>
+            <h2 class="cta-title">We Would Love to <em>Hear From You</em></h2>
+            <p class="cta-text">If you did not find the answer you were looking for, or if you are ready to discuss your book marketing goals in more detail, do not hesitate to reach out. We are here to help.</p>
+            <div class="cta-buttons">
+                <a href="contact-us.html" class="btn-primary">
+                    Get in Touch
+                    <span class="btn-arrow">→</span>
+                </a>
+                <a href="services.html" class="btn-outline">
+                    Explore Services
+                    <span class="btn-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4 class="footer-brand-name">Richard Ryan Alby Book Marketing</h4>
+                    <p class="footer-brand-text">Professional book marketing services dedicated to helping authors build visibility, connect with readers, and grow their presence in the publishing world.</p>
+                </div>
+                <div>
+                    <h5 class="footer-heading">Navigation</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="footer-heading">Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="footer-heading">Contact</h5>
+                    <p class="footer-contact-item">
+                        <a href="mailto:richardryanalby@gmail.com">richardryanalby@gmail.com</a>
+                    </p>
+                    <p class="footer-contact-item" style="margin-top: 8px; font-size: 0.85rem; color: var(--text-muted);">
+                        Available via email and contact form.
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2025 Richard Ryan Alby Book Marketing. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="faqs.html">FAQs</a>
+                    <a href="contact-us.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ── Page Loader ──
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('pageLoader').classList.add('loaded');
+            }, 800);
+        });
+
+        // ── Page Transition ──
+        document.querySelectorAll('a[href$=".html"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var href = this.getAttribute('href');
+                if (href && !href.startsWith('http') && !href.startsWith('mailto')) {
+                    e.preventDefault();
+                    var overlay = document.getElementById('pageTransition');
+                    overlay.classList.add('active');
+                    setTimeout(function() {
+                        window.location.href = href;
+                    }, 400);
+                }
+            });
+        });
+
+        // ── Scroll Header ──
+        var header = document.getElementById('siteHeader');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 80) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ── Mobile Menu ──
+        var mobileToggle = document.getElementById('mobileToggle');
+        var mobileNav = document.getElementById('mobileNav');
+        mobileToggle.addEventListener('click', function() {
+            this.classList.toggle('open');
+            mobileNav.classList.toggle('open');
+            document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+        });
+        mobileNav.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                mobileToggle.classList.remove('open');
+                mobileNav.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // ── Hero Reveal ──
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var heroImg = document.getElementById('heroBgImg');
+                var heroLabel = document.getElementById('heroLabel');
+                var heroTitle = document.getElementById('heroTitle');
+                var heroDesc = document.getElementById('heroDesc');
+                if (heroImg) heroImg.classList.add('revealed');
+                if (heroLabel) heroLabel.classList.add('revealed');
+                if (heroTitle) heroTitle.classList.add('revealed');
+                if (heroDesc) heroDesc.classList.add('revealed');
+            }, 1000);
+        });
+
+        // ── Subtle Parallax ──
+        if (window.innerWidth > 768) {
+            window.addEventListener('scroll', function() {
+                var hero = document.querySelector('.page-hero');
+                if (hero) {
+                    var scrolled = window.scrollY;
+                    var heroHeight = hero.offsetHeight;
+                    if (scrolled < heroHeight) {
+                        var bg = hero.querySelector('.hero-bg img');
+                        if (bg) {
+                            bg.style.transform = 'translateY(' + (scrolled * 0.25) + 'px) scale(1.05)';
+                        }
+                    }
+                }
+            });
+        }
+
+        // ── Scroll Reveal ──
+        var revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+        if ('IntersectionObserver' in window) {
+            var revealObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+            revealElements.forEach(function(el) {
+                revealObserver.observe(el);
+            });
+        }
+        // Fallback
+        setTimeout(function() {
+            revealElements.forEach(function(el) {
+                el.classList.add('visible');
+            });
+        }, 6000);
+
+        // ── FAQ Accordion ──
+        document.querySelectorAll('.faq-question').forEach(function(button) {
+            button.addEventListener('click', function() {
+                var item = this.closest('.faq-item');
+                var wrapper = item.querySelector('.faq-answer-wrapper');
+                var answer = item.querySelector('.faq-answer');
+                var isOpen = item.classList.contains('open');
+
+                // Close all other items in the same category
+                var category = item.closest('.faq-category');
+                category.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+                    if (openItem !== item) {
+                        openItem.classList.remove('open');
+                        openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                        var openWrapper = openItem.querySelector('.faq-answer-wrapper');
+                        openWrapper.style.maxHeight = '0';
+                    }
+                });
+
+                if (isOpen) {
+                    item.classList.remove('open');
+                    this.setAttribute('aria-expanded', 'false');
+                    wrapper.style.maxHeight = '0';
+                } else {
+                    item.classList.add('open');
+                    this.setAttribute('aria-expanded', 'true');
+                    wrapper.style.maxHeight = answer.scrollHeight + 40 + 'px';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+```

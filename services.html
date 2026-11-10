@@ -1,0 +1,2072 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the complete range of professional book marketing services offered by Richard Ryan Alby — from strategic marketing planning and author branding to book launch campaigns, social media marketing, and digital visibility solutions.">
+    <meta name="keywords" content="book marketing services, author branding, book promotion, book launch marketing, social media for authors, content marketing, reader engagement, digital marketing, Richard Ryan Alby">
+    <meta name="author" content="Richard Ryan Alby">
+    <title>Services — Richard Ryan Alby Book Marketing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           CSS RESET & BASE
+           ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-bg: #090909;
+            --secondary-bg: #211A16;
+            --warm-bronze: #A87945;
+            --muted-lavender: #B8A4D4;
+            --warm-ivory: #F5F2ED;
+            --pure-white: #FFFFFF;
+            --bronze-light: #C49A6C;
+            --bronze-dark: #8A6235;
+            --card-bg: #12100E;
+            --card-border: rgba(168, 121, 69, 0.15);
+            --text-muted: #9A958F;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-elegant: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--warm-ivory);
+            line-height: 1.7;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        ::selection {
+            background: var(--warm-bronze);
+            color: var(--pure-white);
+        }
+
+        img { max-width: 100%; height: auto; display: block; }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s var(--transition-smooth);
+        }
+
+        /* ============================================
+           PAGE LOADER
+           ============================================ */
+        .page-loader {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--primary-bg);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s var(--transition-smooth), visibility 0.8s;
+        }
+        .page-loader.loaded {
+            opacity: 0; visibility: hidden; pointer-events: none;
+        }
+        .loader-content { text-align: center; }
+        .loader-line {
+            width: 60px; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--warm-bronze), transparent);
+            margin: 0 auto;
+            animation: loaderPulse 1.2s ease-in-out infinite;
+        }
+        @keyframes loaderPulse {
+            0%, 100% { opacity: 0.3; transform: scaleX(0.6); }
+            50% { opacity: 1; transform: scaleX(1); }
+        }
+        .loader-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px; letter-spacing: 4px;
+            text-transform: uppercase; color: var(--warm-bronze);
+            margin-top: 20px; opacity: 0.7;
+        }
+
+        /* ============================================
+           PAGE TRANSITION
+           ============================================ */
+        .page-transition-overlay {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--primary-bg);
+            z-index: 9999; pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s var(--transition-smooth);
+        }
+        .page-transition-overlay.active {
+            opacity: 1; pointer-events: all;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .nav-header {
+            position: fixed; top: 0; left: 0;
+            width: 100%; z-index: 9000;
+            padding: 0 50px; height: 80px;
+            display: flex; align-items: center;
+            justify-content: space-between;
+            background: rgba(9, 9, 9, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(168, 121, 69, 0.08);
+            transition: all 0.5s var(--transition-smooth);
+            opacity: 0; transform: translateY(-10px);
+        }
+        .nav-header.nav-visible {
+            opacity: 1; transform: translateY(0);
+        }
+        .nav-header.scrolled {
+            height: 70px;
+            background: rgba(9, 9, 9, 0.95);
+            border-bottom-color: rgba(168, 121, 69, 0.12);
+        }
+        .nav-logo {
+            display: flex; align-items: center;
+            gap: 14px; flex-shrink: 0;
+        }
+        .nav-logo img {
+            height: 38px; width: auto; transition: opacity 0.3s;
+        }
+        .nav-logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px; font-weight: 600;
+            color: var(--pure-white);
+            letter-spacing: 0.5px; white-space: nowrap;
+        }
+        .nav-logo-text span { color: var(--warm-bronze); }
+        .nav-links {
+            display: flex; align-items: center;
+            gap: 8px; list-style: none;
+        }
+        .nav-links li a {
+            font-family: 'Inter', sans-serif;
+            font-size: 13.5px; font-weight: 400;
+            color: var(--warm-ivory);
+            padding: 8px 16px; position: relative;
+            letter-spacing: 0.3px;
+            transition: color 0.3s var(--transition-smooth);
+        }
+        .nav-links li a::after {
+            content: '';
+            position: absolute; bottom: 2px;
+            left: 16px; right: 16px;
+            height: 1px; background: var(--warm-bronze);
+            transform: scaleX(0); transform-origin: right;
+            transition: transform 0.4s var(--transition-smooth);
+        }
+        .nav-links li a:hover { color: var(--pure-white); }
+        .nav-links li a:hover::after {
+            transform: scaleX(1); transform-origin: left;
+        }
+        .nav-links li a.active { color: var(--warm-bronze); }
+        .nav-links li a.active::after {
+            transform: scaleX(1); transform-origin: left;
+        }
+        .nav-links li.nav-contact-item a {
+            background: transparent;
+            border: 1px solid var(--warm-bronze);
+            color: var(--warm-bronze);
+            padding: 9px 24px; border-radius: 2px;
+            font-weight: 500;
+            transition: all 0.4s var(--transition-smooth);
+        }
+        .nav-links li.nav-contact-item a::after { display: none; }
+        .nav-links li.nav-contact-item a:hover {
+            background: var(--warm-bronze);
+            color: var(--primary-bg);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(168, 121, 69, 0.3);
+        }
+        .mobile-menu-toggle {
+            display: none; flex-direction: column;
+            gap: 6px; cursor: pointer; padding: 8px;
+            z-index: 9100; background: none; border: none;
+        }
+        .mobile-menu-toggle span {
+            display: block; width: 28px; height: 1.5px;
+            background: var(--warm-ivory);
+            transition: all 0.4s var(--transition-smooth);
+            transform-origin: center;
+        }
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0; transform: scaleX(0);
+        }
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        .mobile-nav-overlay {
+            display: none; position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(9, 9, 9, 0.97);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            z-index: 8999;
+            flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 10px; opacity: 0; visibility: hidden;
+            transition: opacity 0.5s var(--transition-smooth), visibility 0.5s;
+        }
+        .mobile-nav-overlay.open { opacity: 1; visibility: visible; }
+        .mobile-nav-overlay a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px; font-weight: 500;
+            color: var(--warm-ivory);
+            padding: 12px 30px; opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s var(--transition-smooth), color 0.3s;
+        }
+        .mobile-nav-overlay.open a {
+            opacity: 1; transform: translateY(0);
+        }
+        .mobile-nav-overlay a:hover { color: var(--warm-bronze); }
+        .mobile-nav-overlay a.active { color: var(--warm-bronze); }
+        .mobile-nav-overlay a:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-nav-overlay a:nth-child(2) { transition-delay: 0.15s; }
+        .mobile-nav-overlay a:nth-child(3) { transition-delay: 0.2s; }
+        .mobile-nav-overlay a:nth-child(4) { transition-delay: 0.25s; }
+        .mobile-nav-overlay a:nth-child(5) { transition-delay: 0.3s; }
+        .mobile-nav-overlay a:nth-child(6) { transition-delay: 0.35s; }
+
+        /* ============================================
+           TYPOGRAPHY
+           ============================================ */
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            color: var(--pure-white);
+            line-height: 1.2; font-weight: 600;
+        }
+        h1 { font-size: clamp(38px, 5.5vw, 72px); }
+        h2 { font-size: clamp(30px, 3.5vw, 50px); }
+        h3 { font-size: clamp(22px, 2.5vw, 32px); }
+        h4 { font-size: clamp(18px, 1.8vw, 24px); }
+
+        p {
+            color: var(--warm-ivory);
+            opacity: 0.85; line-height: 1.8;
+        }
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px; font-weight: 600;
+            letter-spacing: 4px; text-transform: uppercase;
+            color: var(--warm-bronze);
+            margin-bottom: 20px; display: inline-block;
+        }
+        .section-divider {
+            width: 60px; height: 1px;
+            background: linear-gradient(90deg, var(--warm-bronze), transparent);
+            margin: 20px 0;
+        }
+        .section-divider-center {
+            width: 60px; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--warm-bronze), transparent);
+            margin: 20px auto;
+        }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn {
+            display: inline-flex; align-items: center;
+            gap: 10px; font-family: 'Inter', sans-serif;
+            font-size: 13.5px; font-weight: 500;
+            letter-spacing: 0.8px; padding: 16px 36px;
+            border: none; border-radius: 2px;
+            cursor: pointer; position: relative;
+            overflow: hidden;
+            transition: all 0.45s var(--transition-smooth);
+            text-transform: uppercase;
+        }
+        .btn-primary {
+            background: var(--warm-bronze);
+            color: var(--primary-bg);
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute; top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.6s var(--transition-smooth);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(168, 121, 69, 0.35);
+            background: var(--bronze-light);
+        }
+        .btn-primary:hover::before { left: 100%; }
+        .btn-primary:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(168, 121, 69, 0.25);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--warm-ivory);
+            border: 1px solid rgba(245, 242, 237, 0.3);
+        }
+        .btn-outline::before {
+            content: '';
+            position: absolute; top: 0; left: 0;
+            width: 0; height: 100%;
+            background: rgba(245, 242, 237, 0.08);
+            transition: width 0.45s var(--transition-smooth);
+        }
+        .btn-outline:hover {
+            transform: translateY(-3px);
+            border-color: var(--warm-bronze);
+            color: var(--pure-white);
+            box-shadow: 0 8px 30px rgba(168, 121, 69, 0.15);
+        }
+        .btn-outline:hover::before { width: 100%; }
+        .btn-outline:active { transform: translateY(-1px); }
+        .btn .btn-arrow {
+            display: inline-block;
+            transition: transform 0.35s var(--transition-smooth);
+            font-size: 16px; line-height: 1;
+        }
+        .btn:hover .btn-arrow { transform: translateX(5px); }
+
+        .text-link {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px; font-weight: 500;
+            color: var(--warm-bronze);
+            letter-spacing: 1px; text-transform: uppercase;
+            display: inline-flex; align-items: center;
+            gap: 8px; position: relative;
+            transition: all 0.3s var(--transition-smooth);
+        }
+        .text-link::after {
+            content: '';
+            position: absolute; bottom: -2px; left: 0;
+            width: 0; height: 1px;
+            background: var(--warm-bronze);
+            transition: width 0.4s var(--transition-smooth);
+        }
+        .text-link:hover::after { width: 100%; }
+        .text-link:hover { color: var(--bronze-light); }
+        .text-link .link-arrow {
+            transition: transform 0.35s var(--transition-smooth);
+        }
+        .text-link:hover .link-arrow { transform: translateX(4px); }
+
+        /* ============================================
+           PAGE HERO
+           ============================================ */
+        .page-hero {
+            position: relative;
+            min-height: 55vh;
+            display: flex; align-items: center;
+            justify-content: center;
+            text-align: center; overflow: hidden;
+            padding-top: 80px;
+        }
+        .page-hero-bg {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%; z-index: 1;
+        }
+        .page-hero-bg img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0; transform: scale(1.05);
+            transition: opacity 1.2s var(--transition-smooth), transform 6s var(--transition-smooth);
+        }
+        .page-hero-bg img.revealed {
+            opacity: 1; transform: scale(1);
+        }
+        .page-hero-overlay {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(180deg,
+                rgba(9,9,9,0.75) 0%,
+                rgba(9,9,9,0.6) 50%,
+                rgba(9,9,9,0.9) 100%);
+            z-index: 2;
+        }
+        .page-hero-content {
+            position: relative; z-index: 3;
+            max-width: 800px; padding: 0 40px;
+        }
+        .page-hero-content .section-label {
+            opacity: 0; transform: translateY(15px);
+        }
+        .page-hero-content .section-label.anim-in {
+            opacity: 1; transform: translateY(0);
+            transition: all 0.7s var(--transition-smooth) 0.5s;
+        }
+        .page-hero-content h1 {
+            opacity: 0; transform: translateY(30px);
+        }
+        .page-hero-content h1.anim-in {
+            opacity: 1; transform: translateY(0);
+            transition: all 0.8s var(--transition-elegant) 0.7s;
+        }
+        .page-hero-content .page-hero-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(17px, 2vw, 21px);
+            font-style: italic; color: var(--bronze-light);
+            margin-top: 20px; opacity: 0;
+            transform: translateY(15px);
+        }
+        .page-hero-content .page-hero-desc.anim-in {
+            opacity: 0.85; transform: translateY(0);
+            transition: all 0.7s var(--transition-smooth) 0.9s;
+        }
+        .page-hero-gradient {
+            position: absolute; bottom: 0; left: 0;
+            width: 100%; height: 120px;
+            background: linear-gradient(to top, var(--primary-bg), transparent);
+            z-index: 3;
+        }
+
+        /* ============================================
+           SECTIONS BASE
+           ============================================ */
+        .section { padding: 120px 50px; position: relative; }
+        .section-dark { background: var(--primary-bg); }
+        .section-warm { background: var(--secondary-bg); }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .container-wide { max-width: 1400px; margin: 0 auto; }
+
+        /* ============================================
+           SCROLL ANIMATIONS
+           ============================================ */
+        .reveal {
+            opacity: 0; transform: translateY(40px);
+            transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-left {
+            opacity: 0; transform: translateX(-50px);
+            transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+        }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+        .reveal-right {
+            opacity: 0; transform: translateX(50px);
+            transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+        }
+        .reveal-right.visible { opacity: 1; transform: translateX(0); }
+        .reveal-scale {
+            opacity: 0; transform: scale(0.92);
+            transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+        }
+        .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+        .stagger-1 { transition-delay: 0.1s !important; }
+        .stagger-2 { transition-delay: 0.2s !important; }
+        .stagger-3 { transition-delay: 0.3s !important; }
+        .stagger-4 { transition-delay: 0.4s !important; }
+        .stagger-5 { transition-delay: 0.5s !important; }
+        .stagger-6 { transition-delay: 0.6s !important; }
+        .stagger-7 { transition-delay: 0.7s !important; }
+        .stagger-8 { transition-delay: 0.8s !important; }
+
+        /* ============================================
+           SERVICES INTRO SECTION
+           ============================================ */
+        .services-intro {
+            padding: 100px 50px 60px;
+            text-align: center;
+        }
+        .services-intro-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .services-intro-inner h2 {
+            margin-bottom: 24px;
+        }
+        .services-intro-inner p {
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        /* ============================================
+           SERVICE CATEGORY BLOCK
+           ============================================ */
+        .service-category {
+            padding: 120px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-category:nth-child(odd) {
+            background: var(--primary-bg);
+        }
+
+        .service-category:nth-child(even) {
+            background: var(--secondary-bg);
+        }
+
+        .service-cat-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .service-cat-layout.reverse {
+            direction: rtl;
+        }
+
+        .service-cat-layout.reverse > * {
+            direction: ltr;
+        }
+
+        .service-cat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 80px;
+            font-weight: 300;
+            color: var(--warm-bronze);
+            opacity: 0.15;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .service-cat-content h2 {
+            margin-bottom: 20px;
+            font-size: clamp(26px, 3vw, 40px);
+        }
+
+        .service-cat-content > p {
+            font-size: 15.5px;
+            margin-bottom: 16px;
+        }
+
+        .service-cat-purpose {
+            margin-top: 30px;
+            padding: 24px 28px;
+            background: rgba(168, 121, 69, 0.05);
+            border-left: 3px solid var(--warm-bronze);
+            border-radius: 2px;
+        }
+
+        .service-cat-purpose h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--warm-bronze);
+        }
+
+        .service-cat-purpose p {
+            font-size: 14.5px;
+            opacity: 0.8;
+            margin-bottom: 0;
+        }
+
+        .service-items-list {
+            margin-top: 30px;
+        }
+
+        .service-items-list h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--warm-bronze);
+            margin-bottom: 20px;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(168, 121, 69, 0.08);
+            transition: all 0.3s var(--transition-smooth);
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-item:hover {
+            padding-left: 10px;
+            border-bottom-color: rgba(168, 121, 69, 0.2);
+        }
+
+        .service-item-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--warm-bronze);
+            flex-shrink: 0;
+            margin-top: 8px;
+            transition: transform 0.3s var(--transition-smooth);
+        }
+
+        .service-item:hover .service-item-dot {
+            transform: scale(1.4);
+        }
+
+        .service-item-text {
+            font-size: 14.5px;
+            color: var(--warm-ivory);
+            opacity: 0.82;
+            line-height: 1.6;
+        }
+
+        .service-cat-cta {
+            margin-top: 40px;
+        }
+
+        /* Service Image Column */
+        .service-cat-image-col {
+            position: relative;
+        }
+
+        .service-cat-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 3px;
+        }
+
+        .service-cat-image-wrapper img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            transition: transform 0.7s var(--transition-smooth);
+        }
+
+        .service-cat-image-wrapper:hover img {
+            transform: scale(1.04);
+        }
+
+        .service-cat-image-overlay {
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%;
+            padding: 50px 28px 28px;
+            background: linear-gradient(to top, rgba(9,9,9,0.85), transparent);
+        }
+
+        .service-cat-image-overlay h4 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .service-cat-image-overlay p {
+            font-size: 13px;
+            opacity: 0.65;
+        }
+
+        .service-cat-benefits {
+            margin-top: 28px;
+            padding: 28px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 3px;
+        }
+
+        .service-cat-benefits h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--warm-bronze);
+            margin-bottom: 18px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+        }
+
+        .benefit-check {
+            color: var(--warm-bronze);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .benefit-item p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           SERVICES FULL CTA
+           ============================================ */
+        .services-cta {
+            padding: 160px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .services-cta-bg {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%; z-index: 1;
+        }
+        .services-cta-bg img {
+            width: 100%; height: 100%;
+            object-fit: cover; opacity: 0.12;
+        }
+        .services-cta-overlay {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(180deg, var(--secondary-bg) 0%, rgba(9,9,9,0.6) 50%, var(--primary-bg) 100%);
+            z-index: 2;
+        }
+        .services-cta-content {
+            position: relative; z-index: 3;
+            max-width: 720px; margin: 0 auto;
+        }
+        .services-cta-content h2 { margin-bottom: 24px; }
+        .services-cta-content p {
+            font-size: 16px; margin-bottom: 18px;
+        }
+        .services-cta-buttons {
+            display: flex; gap: 18px;
+            justify-content: center;
+            flex-wrap: wrap; margin-top: 40px;
+        }
+        .services-cta-email {
+            margin-top: 28px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px; color: var(--warm-bronze);
+            font-style: italic;
+            transition: color 0.3s;
+            display: inline-block;
+        }
+        .services-cta-email:hover { color: var(--bronze-light); }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .site-footer {
+            background: var(--primary-bg);
+            border-top: 1px solid rgba(168, 121, 69, 0.1);
+            padding: 80px 50px 40px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 60px; margin-bottom: 60px;
+        }
+        .footer-brand h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px; font-weight: 600;
+            color: var(--pure-white); margin-bottom: 18px;
+        }
+        .footer-brand h4 span { color: var(--warm-bronze); }
+        .footer-brand p {
+            font-size: 14px; line-height: 1.8;
+            opacity: 0.65; max-width: 320px;
+        }
+        .footer-column h5 {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px; font-weight: 600;
+            letter-spacing: 2px; text-transform: uppercase;
+            color: var(--warm-bronze); margin-bottom: 24px;
+        }
+        .footer-links {
+            list-style: none;
+            display: flex; flex-direction: column; gap: 12px;
+        }
+        .footer-links li a {
+            font-size: 14px; color: var(--warm-ivory);
+            opacity: 0.6;
+            transition: all 0.3s var(--transition-smooth);
+            position: relative; padding-left: 0;
+        }
+        .footer-links li a::before {
+            content: '';
+            position: absolute; left: -14px; top: 50%;
+            width: 0; height: 1px;
+            background: var(--warm-bronze);
+            transition: width 0.3s var(--transition-smooth);
+        }
+        .footer-links li a:hover {
+            opacity: 1; color: var(--pure-white); padding-left: 18px;
+        }
+        .footer-links li a:hover::before { width: 10px; }
+        .footer-contact-info p {
+            font-size: 14px; opacity: 0.65; margin-bottom: 8px;
+        }
+        .footer-contact-info a {
+            color: var(--warm-bronze); opacity: 1;
+            transition: color 0.3s;
+        }
+        .footer-contact-info a:hover { color: var(--bronze-light); }
+        .footer-bottom {
+            border-top: 1px solid rgba(168, 121, 69, 0.08);
+            padding-top: 30px;
+            display: flex; align-items: center;
+            justify-content: space-between;
+        }
+        .footer-bottom p { font-size: 12.5px; opacity: 0.4; }
+        .footer-bottom-links { display: flex; gap: 20px; }
+        .footer-bottom-links a {
+            font-size: 12.5px; color: var(--warm-ivory);
+            opacity: 0.4; transition: opacity 0.3s;
+        }
+        .footer-bottom-links a:hover { opacity: 0.8; }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1200px) {
+            .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
+        }
+
+        @media (max-width: 1024px) {
+            .section { padding: 100px 40px; }
+            .service-category { padding: 100px 40px; }
+            .services-intro { padding: 80px 40px 40px; }
+            .services-cta { padding: 120px 40px; }
+            .site-footer { padding: 60px 40px 30px; }
+            .nav-header { padding: 0 30px; }
+            .service-cat-layout { gap: 50px; }
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: 80px 24px; }
+            .service-category { padding: 80px 24px; }
+            .services-intro { padding: 60px 24px 30px; }
+            .services-cta { padding: 100px 24px; }
+            .site-footer { padding: 60px 24px 30px; }
+            .nav-header { padding: 0 20px; }
+            .nav-links { display: none; }
+            .mobile-menu-toggle { display: flex; }
+            .mobile-nav-overlay { display: flex; }
+            .page-hero { min-height: 45vh; }
+            .page-hero-content { padding: 0 24px; }
+
+            .service-cat-layout,
+            .service-cat-layout.reverse {
+                grid-template-columns: 1fr;
+                direction: ltr;
+                gap: 40px;
+            }
+
+            .service-cat-image-wrapper img {
+                height: 300px;
+            }
+
+            .service-cat-number {
+                font-size: 50px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px; text-align: center;
+            }
+            .nav-logo-text { font-size: 15px; }
+        }
+
+        @media (max-width: 480px) {
+            .services-cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .services-cta-buttons .btn {
+                width: 100%; justify-content: center;
+            }
+            .btn {
+                padding: 14px 28px; font-size: 12.5px;
+            }
+        }
+
+        /* ============================================
+           SCROLLBAR
+           ============================================ */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--primary-bg); }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(168, 121, 69, 0.3); border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(168, 121, 69, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE LOADER -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-line"></div>
+            <p class="loader-text">Richard Ryan Alby</p>
+        </div>
+    </div>
+
+    <!-- PAGE TRANSITION -->
+    <div class="page-transition-overlay" id="pageTransition"></div>
+
+    <!-- NAVIGATION -->
+    <header class="nav-header" id="navHeader">
+        <a href="index.html" class="nav-logo">
+            <img src="Logo.png" alt="Richard Ryan Alby Book Marketing Logo" onerror="this.style.display='none'">
+            <span class="nav-logo-text">Richard <span> Ryan Alby</span></span>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="faqs.html">FAQs</a></li>
+                <li class="nav-contact-item"><a href="contact-us.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle mobile menu">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact-us.html">Contact Us</a>
+    </div>
+
+    <!-- ========================================
+         PAGE HERO
+         ======================================== -->
+    <section class="page-hero">
+        <div class="page-hero-bg">
+            <img id="pageHeroBg"
+                 src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1920&q=80"
+                 alt="Grand library filled with elegant book collections under warm lighting">
+            <div class="page-hero-overlay"></div>
+        </div>
+        <div class="page-hero-content">
+            <span class="section-label" id="pageHeroLabel">Our Services</span>
+            <h1 id="pageHeroTitle">A Complete Suite of Professional Book Marketing Services.</h1>
+            <p class="page-hero-desc" id="pageHeroDesc">Explore every marketing solution we offer — from strategic planning and author branding to book launch campaigns and digital visibility.</p>
+        </div>
+        <div class="page-hero-gradient"></div>
+    </section>
+
+    <!-- ========================================
+         SERVICES INTRODUCTION
+         ======================================== -->
+    <section class="services-intro section-dark">
+        <div class="services-intro-inner">
+            <span class="section-label reveal">Service Catalogue</span>
+            <h2 class="reveal stagger-1">Professional Marketing Solutions for Every Stage of Your Publishing Journey.</h2>
+            <div class="section-divider-center reveal stagger-2"></div>
+            <p class="reveal stagger-2">The services outlined below represent a comprehensive approach to book marketing. Each category is designed to address a specific area of an author's promotional needs — from the strategic foundations of marketing planning to the creative execution of campaigns, content, and branding.</p>
+            <p class="reveal stagger-3">Whether you need support with a single element of your marketing or a complete, end-to-end promotional strategy, these services can be combined and tailored to suit your book, your audience, and your objectives.</p>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SERVICE 1: BOOK MARKETING STRATEGY
+         ======================================== -->
+    <div class="service-category section-dark">
+        <div class="container-wide">
+            <div class="service-cat-layout">
+                <div class="service-cat-content">
+                    <div class="service-cat-number reveal">01</div>
+                    <span class="section-label reveal stagger-1">Strategy &amp; Planning</span>
+                    <h2 class="reveal stagger-2">Book Marketing Strategy.</h2>
+                    <div class="section-divider reveal stagger-2"></div>
+                    <p class="reveal stagger-3">Every successful marketing campaign begins with a clear, informed strategy. Without a plan, promotional efforts become scattered and ineffective — reaching the wrong people, at the wrong time, with the wrong message.</p>
+                    <p class="reveal stagger-3">Our book marketing strategy service establishes the foundational blueprint for your entire marketing journey. We analyse your book's positioning, identify your target readership, research your genre landscape, and develop a step-by-step marketing plan that gives every subsequent promotional activity direction and purpose.</p>
+
+                    <div class="service-cat-purpose reveal stagger-4">
+                        <h4>Why Strategy Comes First</h4>
+                        <p>Marketing without strategy is guesswork. A clear plan ensures your time, budget, and creative energy are invested in activities that genuinely move the needle — not just activities that feel productive.</p>
+                    </div>
+
+                    <div class="service-items-list reveal stagger-5">
+                        <h4>What This Service Includes</h4>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Customized book marketing strategies tailored to your book, genre, and goals</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Marketing campaign planning with phased timelines and milestones</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Target audience identification and reader profile development</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Book positioning and competitive differentiation analysis</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Genre research to understand market dynamics and reader expectations</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Promotional planning across digital and traditional channels</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Marketing message development and core campaign narrative</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Marketing opportunity research and channel recommendations</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Campaign direction documents and creative briefs</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Ongoing marketing strategy reviews and adjustments</span>
+                        </div>
+                    </div>
+
+                    <div class="service-cat-cta reveal stagger-6">
+                        <a href="contact-us.html" class="btn btn-primary">
+                            Discuss This Service <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-cat-image-col">
+                    <div class="service-cat-image-wrapper reveal-right stagger-3">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=700&q=80"
+                             alt="Person planning with notebooks and books on a warm wooden desk">
+                        <div class="service-cat-image-overlay">
+                            <h4>Strategic Foundation</h4>
+                            <p>Building your marketing roadmap</p>
+                        </div>
+                    </div>
+                    <div class="service-cat-benefits reveal stagger-5">
+                        <h4>Potential Benefits</h4>
+                        <div class="benefit-item">
+                            <span class="benefit-check">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <p>Clear promotional direction for every marketing decision</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <p>Focused audience targeting to maximize impact</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <p>Efficient use of marketing budget and time</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <p>Stronger competitive positioning within your genre</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SERVICE 2: BOOK PROMOTION & VISIBILITY
+         ======================================== -->
+    <div class="service-category section-warm">
+        <div class="container-wide">
+            <div class="service-cat-layout reverse">
+                <div class="service-cat-content">
+                    <div class="service-cat-number reveal">02</div>
+                    <span class="section-label reveal stagger-1">Promotion &amp; Discovery</span>
+                    <h2 class="reveal stagger-2">Book Promotion &amp; Visibility.</h2>
+                    <div class="section-divider reveal stagger-2"></div>
+                    <p class="reveal stagger-3">Visibility is the single most important factor in connecting your book with readers. A book that cannot be found cannot be read, regardless of its quality. Professional promotion creates the pathways through which readers discover your work.</p>
+                    <p class="reveal stagger-3">Our promotion and visibility services are designed to place your book in front of the right audiences through carefully planned digital campaigns, strategic content placement, and targeted promotional activities that build awareness progressively and authentically.</p>
+
+                    <div class="service-cat-purpose reveal stagger-4">
+                        <h4>The Power of Visibility</h4>
+                        <p>Readers cannot engage with books they don't know exist. Effective promotional campaigns create multiple touchpoints that build familiarity, curiosity, and ultimately drive reader action.</p>
+                    </div>
+
+                    <div class="service-items-list reveal stagger-5">
+                        <h4>What This Service Includes</h4>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Online book promotion across targeted digital channels</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Digital promotional campaigns with coordinated messaging</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Book visibility strategies tailored to your genre and audience</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Book discovery planning and search optimization considerations</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Genre-focused promotion within relevant reader communities</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Promotional content development including graphics and copy</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Book announcement campaigns for new and upcoming releases</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Reader awareness strategies and engagement-driven outreach</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Professional promotional graphics and visual marketing assets</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Online promotional planning and campaign scheduling</span>
+                        </div>
+                    </div>
+
+                    <div class="service-cat-cta reveal stagger-6">
+                        <a href="contact-us.html" class="btn btn-primary">
+                            Discuss This Service <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-cat-image-col">
+                    <div class="service-cat-image-wrapper reveal-left stagger-3">
+                        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=700&q=80"
+                             alt="Books beautifully arranged with warm lighting highlighting their covers">
+                        <div class="service-cat-image-overlay">
+                            <h4>Maximum Discoverability</h4>
+                            <p>Getting your book seen by the right readers</p>
+                        </div>
+                    </div>
+                    <div class="service-cat-benefits reveal stagger-5">
+                        <h4>Potential Benefits</h4>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Increased book awareness among target readers</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Professional promotional materials you can use repeatedly</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Coordinated visibility across multiple platforms</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Sustained promotional presence beyond launch day</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SERVICE 3: SOCIAL MEDIA MARKETING
+         ======================================== -->
+    <div class="service-category section-dark">
+        <div class="container-wide">
+            <div class="service-cat-layout">
+                <div class="service-cat-content">
+                    <div class="service-cat-number reveal">03</div>
+                    <span class="section-label reveal stagger-1">Social Presence</span>
+                    <h2 class="reveal stagger-2">Social Media Marketing.</h2>
+                    <div class="section-divider reveal stagger-2"></div>
+                    <p class="reveal stagger-3">Social media is one of the most powerful tools available to authors today. When used strategically, it builds genuine relationships with readers, establishes your authority within your genre, and creates ongoing opportunities for book discovery.</p>
+                    <p class="reveal stagger-3">Our social media marketing service goes beyond random posting. We develop platform-specific strategies, create visually compelling content, write engaging captions, and build content calendars that maintain consistency and keep your audience engaged between publications.</p>
+
+                    <div class="service-cat-purpose reveal stagger-4">
+                        <h4>Social Media Done Right</h4>
+                        <p>Effective author social media isn't about posting every day — it's about posting the right content, on the right platform, at the right time, in a way that reflects your brand and resonates with your readers.</p>
+                    </div>
+
+                    <div class="service-items-list reveal stagger-5">
+                        <h4>What This Service Includes</h4>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Social media marketing strategy aligned with your author brand</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Content calendars with scheduled posting recommendations</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Professional promotional graphics designed for each platform</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Engaging social media captions and post copy</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Book announcement posts and reveal campaign content</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Author profile development and optimization</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Audience engagement strategies and community interaction plans</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Platform-specific content tailored to each audience</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Campaign coordination across multiple social channels</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Author brand consistency across all social platforms</span>
+                        </div>
+                    </div>
+
+                    <div class="service-cat-cta reveal stagger-6">
+                        <a href="contact-us.html" class="btn btn-primary">
+                            Discuss This Service <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-cat-image-col">
+                    <div class="service-cat-image-wrapper reveal-right stagger-3">
+                        <img src="https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=700&q=80"
+                             alt="Creative workspace with books, notebooks and digital devices">
+                        <div class="service-cat-image-overlay">
+                            <h4>Engaging Content</h4>
+                            <p>Building your social presence with purpose</p>
+                        </div>
+                    </div>
+                    <div class="service-cat-benefits reveal stagger-5">
+                        <h4>Potential Benefits</h4>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Consistent, professional social media presence</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Deeper reader engagement and community building</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Time-saving content planning and creation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SERVICE 4: AUTHOR BRANDING
+         ======================================== -->
+    <div class="service-category section-warm">
+        <div class="container-wide">
+            <div class="service-cat-layout reverse">
+                <div class="service-cat-content">
+                    <div class="service-cat-number reveal">04</div>
+                    <span class="section-label reveal stagger-1">Identity &amp; Brand</span>
+                    <h2 class="reveal stagger-2">Author Branding.</h2>
+                    <div class="section-divider reveal stagger-2"></div>
+                    <p class="reveal stagger-3">Your author brand is more than a logo or a colour palette — it's the complete impression readers form when they encounter your name, your books, and your online presence. A cohesive, professionally developed brand creates trust, recognition, and lasting reader loyalty.</p>
+                    <p class="reveal stagger-3">We develop author brands that feel authentic to who you are as a writer while positioning you professionally within your genre. From visual identity to messaging, biography to platform presence — every element is crafted to work together seamlessly.</p>
+
+                    <div class="service-items-list reveal stagger-5">
+                        <h4>What This Service Includes</h4>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Author brand identity development and visual direction</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Author positioning within your genre and market</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Professional author biographies in multiple formats and lengths</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Author profile development for platforms and publications</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Brand messaging frameworks and tone of voice guidelines</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Visual brand consistency across all promotional materials</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Author platform planning and development strategy</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Professional author presentation and image consulting</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Author website content planning and brand integration</span>
+                        </div>
+                    </div>
+
+                    <div class="service-cat-cta reveal stagger-6">
+                        <a href="contact-us.html" class="btn btn-primary">
+                            Discuss This Service <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-cat-image-col">
+                    <div class="service-cat-image-wrapper reveal-left stagger-3">
+                        <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=700&q=80"
+                             alt="Elegant book display with refined typography and warm aesthetic">
+                        <div class="service-cat-image-overlay">
+                            <h4>Your Identity</h4>
+                            <p>Building a brand readers remember</p>
+                        </div>
+                    </div>
+                    <div class="service-cat-benefits reveal stagger-5">
+                        <h4>Potential Benefits</h4>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>A cohesive brand identity that builds reader trust</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Professional presentation across every platform</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Stronger recognition and lasting reader loyalty</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SERVICE 5: BOOK LAUNCH MARKETING
+         ======================================== -->
+    <div class="service-category section-dark">
+        <div class="container-wide">
+            <div class="service-cat-layout">
+                <div class="service-cat-content">
+                    <div class="service-cat-number reveal">05</div>
+                    <span class="section-label reveal stagger-1">Launch &amp; Release</span>
+                    <h2 class="reveal stagger-2">Book Launch Marketing.</h2>
+                    <div class="section-divider reveal stagger-2"></div>
+                    <p class="reveal stagger-3">A book launch is one of the most critical moments in your publishing journey. The weeks surrounding your release date represent a concentrated window of opportunity — and how you use that window can define your book's trajectory for months or even years to come.</p>
+                    <p class="reveal stagger-3">Our book launch marketing service covers every phase: the anticipation-building pre-launch period, the high-energy launch day itself, and the sustained post-launch promotion that keeps momentum alive long after the initial excitement fades.</p>
+
+                    <div class="service-items-list reveal stagger-5">
+                        <h4>What This Service Includes</h4>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Pre-launch marketing strategy and audience warming campaigns</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Comprehensive book launch strategy with detailed timelines</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Book announcement campaigns and reveal content</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Countdown promotional content and social media sequences</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Professional launch graphics and visual marketing materials</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Launch messaging and compelling promotional copy</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Promotional scheduling and coordinated campaign delivery</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Launch day communication strategy and real-time content</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Post-launch promotion and sustained visibility campaigns</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Ongoing visibility planning for continued reader engagement</span>
+                        </div>
+                    </div>
+
+                    <div class="service-cat-cta reveal stagger-6">
+                        <a href="contact-us.html" class="btn btn-primary">
+                            Discuss This Service <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-cat-image-col">
+                    <div class="service-cat-image-wrapper reveal-right stagger-3">
+                        <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=700&q=80"
+                             alt="Open book with elegant lighting creating a sense of anticipation">
+                        <div class="service-cat-image-overlay">
+                            <h4>Launch Day &amp; Beyond</h4>
+                            <p>Making your release date unforgettable</p>
+                        </div>
+                    </div>
+                    <div class="service-cat-benefits reveal stagger-5">
+                        <h4>Potential Benefits</h4>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Maximum impact during your critical launch window</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Coordinated promotion that builds anticipation</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Sustained visibility long after launch day</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SERVICE 6: CONTENT MARKETING & COPYWRITING
+         ======================================== -->
+    <div class="service-category section-warm">
+        <div class="container-wide">
+            <div class="service-cat-layout reverse">
+                <div class="service-cat-content">
+                    <div class="service-cat-number reveal">06</div>
+                    <span class="section-label reveal stagger-1">Words That Work</span>
+                    <h2 class="reveal stagger-2">Content Marketing &amp; Copywriting.</h2>
+                    <div class="section-divider reveal stagger-2"></div>
+                    <p class="reveal stagger-3">Words sell books. The right book description can convert a curious browser into a committed buyer. The right social media caption can stop a scrolling reader and make them click. The right newsletter can bring a dormant audience back to attention.</p>
+                    <p class="reveal stagger-3">Our content marketing and copywriting services ensure that every written element of your marketing communicates clearly, persuasively, and authentically. From concise promotional captions to detailed book descriptions, every word is crafted with your audience in mind.</p>
+
+                    <div class="service-items-list reveal stagger-5">
+                        <h4>What This Service Includes</h4>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Promotional copywriting for campaigns and advertisements</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Compelling book descriptions that capture reader interest</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Marketing captions for social media and online promotions</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Promotional email sequences and newsletter content</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Author newsletter strategy, design direction, and writing</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Blog content planning and article creation</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Book announcement copy and press-ready descriptions</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Marketing messages tailored to different promotional channels</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Social media content writing with audience-appropriate tone</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Promotional campaign writing for multi-channel distribution</span>
+                        </div>
+                    </div>
+
+                    <div class="service-cat-cta reveal stagger-6">
+                        <a href="contact-us.html" class="btn btn-primary">
+                            Discuss This Service <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-cat-image-col">
+                    <div class="service-cat-image-wrapper reveal-left stagger-3">
+                        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=700&q=80"
+                             alt="Elegant writing desk with fountain pen, notebook and literary atmosphere">
+                        <div class="service-cat-image-overlay">
+                            <h4>Compelling Copy</h4>
+                            <p>Words that capture and convert</p>
+                        </div>
+                    </div>
+                    <div class="service-cat-benefits reveal stagger-5">
+                        <h4>Potential Benefits</h4>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Persuasive book descriptions that convert browsers to buyers</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Consistent brand voice across all written materials</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Professional content that strengthens your author credibility</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SERVICE 7: READER ENGAGEMENT
+         ======================================== -->
+    <div class="service-category section-dark">
+        <div class="container-wide">
+            <div class="service-cat-layout">
+                <div class="service-cat-content">
+                    <div class="service-cat-number reveal">07</div>
+                    <span class="section-label reveal stagger-1">Community &amp; Connection</span>
+                    <h2 class="reveal stagger-2">Reader Engagement.</h2>
+                    <div class="section-divider reveal stagger-2"></div>
+                    <p class="reveal stagger-3">The most successful authors don't just have readers — they have engaged communities. Reader engagement is the practice of building meaningful, two-way relationships with the people who read and appreciate your work.</p>
+                    <p class="reveal stagger-3">Our reader engagement services help you develop strategies for creating and nurturing these connections — turning one-time readers into loyal fans who follow your career, share your work, and look forward to every new release.</p>
+
+                    <div class="service-items-list reveal stagger-5">
+                        <h4>What This Service Includes</h4>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Reader engagement strategies tailored to your genre community</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Audience development planning and growth strategies</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Reader community awareness and outreach planning</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Genre community engagement and participation strategies</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Reader-focused promotional content creation</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Community engagement planning and interaction frameworks</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Promotional communication designed to deepen reader connection</span>
+                        </div>
+                    </div>
+
+                    <div class="service-cat-cta reveal stagger-6">
+                        <a href="contact-us.html" class="btn btn-primary">
+                            Discuss This Service <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-cat-image-col">
+                    <div class="service-cat-image-wrapper reveal-right stagger-3">
+                        <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=700&q=80"
+                             alt="Stack of books with reading glasses in a cozy literary setting">
+                        <div class="service-cat-image-overlay">
+                            <h4>Loyal Readership</h4>
+                            <p>Building lasting reader relationships</p>
+                        </div>
+                    </div>
+                    <div class="service-cat-benefits reveal stagger-5">
+                        <h4>Potential Benefits</h4>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Deeper, more meaningful connection with your audience</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Organic word-of-mouth promotion from engaged readers</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>A built-in audience for future book releases</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SERVICE 8: DIGITAL MARKETING SUPPORT
+         ======================================== -->
+    <div class="service-category section-warm">
+        <div class="container-wide">
+            <div class="service-cat-layout reverse">
+                <div class="service-cat-content">
+                    <div class="service-cat-number reveal">08</div>
+                    <span class="section-label reveal stagger-1">Digital Presence</span>
+                    <h2 class="reveal stagger-2">Digital Marketing Support.</h2>
+                    <div class="section-divider reveal stagger-2"></div>
+                    <p class="reveal stagger-3">In today's publishing landscape, your digital presence is often the first — and sometimes the only — impression a potential reader will have of you and your book. A professionally managed digital marketing strategy ensures that impression is compelling, consistent, and strategically effective.</p>
+                    <p class="reveal stagger-3">Our digital marketing support provides the expertise and execution you need to maintain a strong, visible, and well-coordinated online presence across every relevant channel.</p>
+
+                    <div class="service-items-list reveal stagger-5">
+                        <h4>What This Service Includes</h4>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Digital marketing strategy development and implementation</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Online brand visibility assessment and improvement planning</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Marketing content planning across digital channels</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Digital campaign coordination and multi-channel management</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Promotional content development for websites and platforms</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Author platform support and ongoing maintenance planning</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Online audience development and growth strategies</span>
+                        </div>
+                    </div>
+
+                    <div class="service-cat-cta reveal stagger-6">
+                        <a href="contact-us.html" class="btn btn-primary">
+                            Discuss This Service <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-cat-image-col">
+                    <div class="service-cat-image-wrapper reveal-left stagger-3">
+                        <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=700&q=80"
+                             alt="Books and technology in a modern creative workspace">
+                        <div class="service-cat-image-overlay">
+                            <h4>Digital Excellence</h4>
+                            <p>Strategic online presence management</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SERVICE 9: AUTHOR PLATFORM DEVELOPMENT
+         ======================================== -->
+    <div class="service-category section-dark">
+        <div class="container-wide">
+            <div class="service-cat-layout">
+                <div class="service-cat-content">
+                    <div class="service-cat-number reveal">09</div>
+                    <span class="section-label reveal stagger-1">Platform &amp; Foundation</span>
+                    <h2 class="reveal stagger-2">Author Platform Development.</h2>
+                    <div class="section-divider reveal stagger-2"></div>
+                    <p class="reveal stagger-3">Your author platform is the complete ecosystem of your professional presence — your website, your social profiles, your newsletter, your professional biography, and every touchpoint where readers encounter your name. A well-built platform doesn't just support one book launch; it supports your entire writing career.</p>
+                    <p class="reveal stagger-3">We help authors build platforms that are strategic, cohesive, and designed for long-term growth. Every element works together to create a unified professional presence that readers trust and return to.</p>
+
+                    <div class="service-items-list reveal stagger-5">
+                        <h4>What This Service Includes</h4>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Author website content planning and structure recommendations</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Author brand presentation across all digital touchpoints</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Professional author profile content for publishing platforms</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Author platform strategy for sustainable career growth</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Digital presence planning and optimization</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Consistent brand messaging across website, social, and email</span>
+                        </div>
+                    </div>
+
+                    <div class="service-cat-cta reveal stagger-6">
+                        <a href="contact-us.html" class="btn btn-primary">
+                            Discuss This Service <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-cat-image-col">
+                    <div class="service-cat-image-wrapper reveal-right stagger-3">
+                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=700&q=80"
+                             alt="Open book on a desk with warm lighting and creative workspace elements">
+                        <div class="service-cat-image-overlay">
+                            <h4>Your Foundation</h4>
+                            <p>Building a platform that lasts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SERVICE 10: PROMOTIONAL CAMPAIGN DEVELOPMENT
+         ======================================== -->
+    <div class="service-category section-warm">
+        <div class="container-wide">
+            <div class="service-cat-layout reverse">
+                <div class="service-cat-content">
+                    <div class="service-cat-number reveal">10</div>
+                    <span class="section-label reveal stagger-1">Campaigns &amp; Execution</span>
+                    <h2 class="reveal stagger-2">Promotional Campaign Development.</h2>
+                    <div class="section-divider reveal stagger-2"></div>
+                    <p class="reveal stagger-3">A promotional campaign is more than a series of social media posts. It's a coordinated, multi-element marketing initiative that delivers a specific message to a specific audience over a defined period of time — with every piece working together toward a shared goal.</p>
+                    <p class="reveal stagger-3">We develop complete promotional campaigns from concept to delivery, ensuring every element — from messaging and graphics to scheduling and deployment — is thoughtfully planned and professionally executed.</p>
+
+                    <div class="service-items-list reveal stagger-5">
+                        <h4>What This Service Includes</h4>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Complete campaign planning from concept to execution</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Promotional messaging development and creative direction</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Marketing graphics and visual assets for campaign use</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Campaign content including copy, captions, and emails</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Promotional schedules with phased content deployment</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Campaign coordination across multiple marketing channels</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item-dot"></div>
+                            <span class="service-item-text">Content organization and asset management for campaigns</span>
+                        </div>
+                    </div>
+
+                    <div class="service-cat-cta reveal stagger-6">
+                        <a href="contact-us.html" class="btn btn-primary">
+                            Discuss This Service <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-cat-image-col">
+                    <div class="service-cat-image-wrapper reveal-left stagger-3">
+                        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=700&q=80"
+                             alt="Carefully arranged books symbolizing organized campaign planning">
+                        <div class="service-cat-image-overlay">
+                            <h4>Coordinated Campaigns</h4>
+                            <p>Every element working together</p>
+                        </div>
+                    </div>
+                    <div class="service-cat-benefits reveal stagger-5">
+                        <h4>Potential Benefits</h4>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Professionally coordinated campaigns that deliver results</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Complete promotional packages ready for deployment</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <p>Consistent messaging across every promotional channel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         FINAL CTA
+         ======================================== -->
+    <section class="services-cta">
+        <div class="services-cta-bg">
+            <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=1920&q=80"
+                 alt="Beautiful literary atmosphere with warm lighting">
+            <div class="services-cta-overlay"></div>
+        </div>
+        <div class="services-cta-content">
+            <span class="section-label reveal">Ready to Begin?</span>
+            <h2 class="reveal stagger-1">Let's Build a Marketing Strategy That Serves Your Book.</h2>
+            <div class="section-divider-center reveal stagger-2"></div>
+            <p class="reveal stagger-2">Every service listed above can be tailored, combined, or scaled to meet your specific needs. Whether you're looking for a single focused service or a comprehensive marketing partnership, I'm here to help you develop the right approach.</p>
+            <p class="reveal stagger-3">Reach out to discuss your project, explore your options, or simply ask a question. There's no obligation — just a genuine conversation about how professional marketing can support your publishing goals.</p>
+            <div class="services-cta-buttons reveal stagger-4">
+                <a href="contact-us.html" class="btn btn-primary">
+                    Contact Us <span class="btn-arrow">→</span>
+                </a>
+                <a href="pricing.html" class="btn btn-outline">
+                    Explore Pricing <span class="btn-arrow">→</span>
+                </a>
+            </div>
+            <div class="reveal stagger-5">
+                <a href="mailto:richardryanalby@gmail.com" class="services-cta-email">richardryanalby@gmail.com</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
+    <footer class="site-footer">
+        <div class="container-wide">
+            <div class="footer-grid reveal">
+                <div class="footer-brand">
+                    <h4>Richard <span> Ryan Alby</span></h4>
+                    <p>Professional book marketing services for authors who want their work to be seen, recognized, and valued. We help writers navigate the world of book promotion with strategy, creativity, and purpose.</p>
+                </div>
+                <div class="footer-column">
+                    <h5>Navigation</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h5>Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                        <li><a href="services.html">All Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column footer-contact-info">
+                    <h5>Contact</h5>
+                    <p>For inquiries and project discussions:</p>
+                    <p><a href="mailto:richardryanalby@gmail.com">richardryanalby@gmail.com</a></p>
+                    <p style="margin-top: 16px; font-size: 13px; opacity: 0.5;">We communicate via email only.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Richard yan Alby Book Marketing. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="contact-us.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         JAVASCRIPT
+         ======================================== -->
+    <script>
+        // PAGE LOADER
+        (function() {
+            var loader = document.getElementById('pageLoader');
+            function hideLoader() {
+                if (loader) {
+                    loader.classList.add('loaded');
+                    setTimeout(function() { triggerPageHeroAnimation(); }, 300);
+                }
+            }
+            if (document.readyState === 'complete') {
+                setTimeout(hideLoader, 500);
+            } else {
+                window.addEventListener('load', function() { setTimeout(hideLoader, 500); });
+            }
+            setTimeout(hideLoader, 4000);
+        })();
+
+        // PAGE HERO ANIMATION
+        function triggerPageHeroAnimation() {
+            var nav = document.getElementById('navHeader');
+            if (nav) nav.classList.add('nav-visible');
+            var heroBg = document.getElementById('pageHeroBg');
+            if (heroBg) heroBg.classList.add('revealed');
+            var heroLabel = document.getElementById('pageHeroLabel');
+            var heroTitle = document.getElementById('pageHeroTitle');
+            var heroDesc = document.getElementById('pageHeroDesc');
+            if (heroLabel) heroLabel.classList.add('anim-in');
+            if (heroTitle) heroTitle.classList.add('anim-in');
+            if (heroDesc) heroDesc.classList.add('anim-in');
+        }
+
+        // NAV SCROLL
+        (function() {
+            var nav = document.getElementById('navHeader');
+            window.addEventListener('scroll', function() {
+                if (nav) {
+                    if (window.pageYOffset > 80) { nav.classList.add('scrolled'); }
+                    else { nav.classList.remove('scrolled'); }
+                }
+            }, { passive: true });
+        })();
+
+        // MOBILE NAV
+        (function() {
+            var toggle = document.getElementById('mobileToggle');
+            var mobileNav = document.getElementById('mobileNav');
+            if (toggle && mobileNav) {
+                toggle.addEventListener('click', function() {
+                    toggle.classList.toggle('active');
+                    mobileNav.classList.toggle('open');
+                    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+                });
+                mobileNav.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        toggle.classList.remove('active');
+                        mobileNav.classList.remove('open');
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+        })();
+
+        // SCROLL REVEAL
+        (function() {
+            var els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+            if (!els.length) return;
+            if ('IntersectionObserver' in window) {
+                var obs = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (e.isIntersecting) {
+                            e.target.classList.add('visible');
+                            obs.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+                els.forEach(function(el) { obs.observe(el); });
+            } else {
+                els.forEach(function(el) { el.classList.add('visible'); });
+            }
+        })();
+
+        // PAGE TRANSITIONS
+        (function() {
+            var transition = document.getElementById('pageTransition');
+            document.querySelectorAll('a[href]').forEach(function(link) {
+                var href = link.getAttribute('href');
+                if (href && href.endsWith('.html') && !href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('#')) {
+                    link.addEventListener('click', function(e) {
+                        if (e.ctrlKey || e.metaKey || e.shiftKey) return;
+                        e.preventDefault();
+                        if (transition) {
+                            transition.classList.add('active');
+                            setTimeout(function() { window.location.href = href; }, 400);
+                        } else { window.location.href = href; }
+                    });
+                }
+            });
+        })();
+
+        // PARALLAX
+        (function() {
+            var heroBg = document.getElementById('pageHeroBg');
+            if (!heroBg || window.innerWidth <= 768) return;
+            window.addEventListener('scroll', function() {
+                var scrollY = window.pageYOffset;
+                if (scrollY < window.innerHeight) {
+                    heroBg.style.transform = 'scale(' + (1 + scrollY * 0.00008) + ') translateY(' + (scrollY * 0.12) + 'px)';
+                }
+            }, { passive: true });
+        })();
+
+        // FALLBACK
+        (function() {
+            setTimeout(function() {
+                document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
+                    if (!el.classList.contains('visible')) {
+                        el.style.opacity = '1'; el.style.transform = 'none';
+                    }
+                });
+                var nav = document.getElementById('navHeader');
+                if (nav && !nav.classList.contains('nav-visible')) nav.classList.add('nav-visible');
+            }, 6000);
+        })();
+    </script>
+</body>
+</html>
+```
